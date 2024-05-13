@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,
+html,
+:root {
+  height: 100%;
+}
+
+.menu-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 5px;
+  background: #e0ffff;
+  min-width: 150px;
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.5s ease-in-out; /* Transition opacity over 2 seconds */
+}
+
+.menu-container.visible {
+  opacity: 1; /* Make visible when 'visible' class is added */
+}
+
+.selected-item {
+  border: 1px solid #008080;
+  border-radius: 5px;
+}

@@ -1,13 +1,13 @@
-pipeline {
-    agent { label 'ec2' }
+pipeline { 
+    agent { label 'ec2' } // Here I'm using a Node with label "ec2" where I'm deploying the application. 
 
     stages {
-        stage('git') {
+        stage('git') { // cloning GitHub repository 
             steps {
                 git branch: 'main', url: 'https://github.com/rajneesh011/popup-editor.git'
             }
         }
-        stage('build') {
+        stage('build') { // installing the packages and building 
             steps {
                 sh '''
                     npm install
@@ -15,10 +15,10 @@ pipeline {
                 '''
             }
         }
-        stage('deploy') {
+        stage('deploy') { // using pm2 service manager to run the application
             steps {
                 sh '''
-                    pm2 start -x "npm start" --name "react-app"
+                    pm2 start -x "npm start" --name "task-app"
                     pm2 save
                 '''
             }
